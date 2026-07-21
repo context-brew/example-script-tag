@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Context Brew — script-tag example</title>
+  <style>
+    body { font-family: system-ui, sans-serif; display: grid; place-items: center; min-height: 100vh; margin: 0; background: #faf9fb; }
+    .card { max-width: 460px; padding: 32px; border: 1px solid #e5e2ea; border-radius: 12px; background: #fff; }
+    h1 { font-size: 20px; margin: 0 0 8px; }
+    p { color: #555; line-height: 1.5; }
+    code { background: #f2f0f6; padding: 1px 5px; border-radius: 4px; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🍴 Context Brew — script-tag example</h1>
+    <p>This page has <b>no framework</b> — the Send-feedback button in the corner comes from the
+       single <code>&lt;script&gt;</code> tag at the bottom of this file. The same tag works in a
+       Rails ERB layout, a Laravel Blade template, a Vue/Nuxt app shell, or any static page.</p>
+    <p>Edit <code>data-key</code> and <code>data-board</code> below, then open this file in a browser
+       (or <code>npx serve .</code>).</p>
+  </div>
+
+  <!-- The whole integration. React is bundled inside; styles self-inject. -->
+  <script src="https://cdn.cbrew.co/embed.js"
+          data-key="fbk_PASTE_YOURS"
+          data-api="https://api.cbrew.co"
+          data-name="My Workspace"
+          data-board="https://board.cbrew.co/YOUR-WORKSPACE-SLUG"></script>
+</body>
+</html>
