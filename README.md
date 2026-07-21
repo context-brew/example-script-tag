@@ -25,14 +25,28 @@ Put the tag in your layout template so it renders on every page:
 
 - **Rails** — `app/views/layouts/application.html.erb`, before `</body>`.
 - **Laravel** — your Blade layout (`resources/views/layouts/app.blade.php`), before `</body>`.
-- **Vue / Nuxt** — `app.html` / `index.html`, or inject via `useHead`.
+- **Vue** — `index.html` of your SPA.
+- **Nuxt 3** — declare it once in config so it rides every page:
+
+  ```ts
+  // nuxt.config.ts
+  export default defineNuxtConfig({
+    app: { head: { script: [{
+      src: 'https://cdn.cbrew.co/embed.js',
+      'data-key': 'fbk_your_publishable_key',
+      'data-name': 'Acme',
+      'data-board': 'https://board.cbrew.co/your-workspace',
+      tagPosition: 'bodyClose', defer: true,
+    }] } },
+  })
+  ```
 - **Anything else** — wherever your pages share a footer.
 
 Prefer to serve the file yourself instead of the CDN? The identical bundle ships inside the
 [`cbrew` npm package](https://www.npmjs.com/package/cbrew) at `cbrew/dist/embed.js`
-(mirrored at `https://unpkg.com/cbrew/dist/embed.js`) — install it with npm (Rails
-jsbundling/importmap and Laravel Vite both consume npm packages) and point your asset pipeline
-at that file.
+(mirrored at `https://unpkg.com/cbrew/dist/embed.js`). Note it's a **self-contained IIFE, not an
+ES module** — serve it as a plain `<script src>` (copy it into `public/`/`app/assets`); don't
+importmap-pin it or `import` it into a bundle.
 
 ### Tag attributes
 
